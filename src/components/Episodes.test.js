@@ -589,30 +589,7 @@ test("render episodes when page loads",  () => {
 
 mockFetchShow.mockResolvedValue(data);
 
-test("render episodes when page loads", async () => {
+test("rerender episodes when page loads", async () => {
     const { rerender } = render(<Episodes episodes={[]} />);
     rerender(<Episodes episodes={data._embedded.episodes} />);
 });
-
-// test("render episodes when page loads", async () => {
-//   // mockFetchShow.mockResolvedValueOnce(data);
-
-//   render(<Episodes episodes={data} />);
-
-//   // wait for screen to load
-//   // await screen.findAllByText(/stranger things/i);
-
-//   // const dropdown = screen.getByPlaceholderText('Select a season');
-//   // userEvent.click(dropdown);
-
-//   // wait for the show to render
-// //   await screen.findAllByText(/stranger things/i);
-// //   // do the dropdown
-// //   const dropdown = await screen.findByText(/select a season/i);
-// //   userEvent.click(dropdown);
-// //   const season1 = await screen.findByText(/season 1/i);
-// //   userEvent.click(season1);
-// //   // assert that episode 1 is now rendered
-// //   const ep1 = await screen.findAllByText(/chapter one/i);
-// //   expect(ep1[0]).toBeVisible();
-// });

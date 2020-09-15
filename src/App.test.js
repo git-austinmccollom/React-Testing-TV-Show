@@ -588,5 +588,39 @@ const data = {
 mockFetchShow.mockResolvedValue(data);
 
 test("render without errors", () => {
-  render(<App />);
+    render(<App />);
 });
+
+test("Render and select season from dropdown", async () => {
+    render(<App />);
+
+    //wait for screen to load
+    await screen.findAllByText(/stranger things/i);
+    
+    //declare dropdown and click
+    const dropdown = await screen.findByText( /select a season/i);
+    userEvent.click(dropdown);
+    const seasonOne = await screen.findByText(/season 1/i);
+    userEvent.click(seasonOne);
+    let ep1 = await screen.findAllByText(/chapter one/i);
+    expect(ep1[0]).toBeVisible();
+
+    userEvent.click(dropdown);
+    const seasonTwo = await screen.findByText(/season 2/i);
+    userEvent.click(seasonTwo);
+    ep1 = await screen.findAllByText(/chapter one/i);
+    expect(ep1[0]).toBeVisible();
+
+    userEvent.click(dropdown);
+    const seasonThree = await screen.findByText(/season 3/i);
+    userEvent.click(seasonThree);
+    ep1 = await screen.findAllByText(/chapter one/i);
+    expect(ep1[0]).toBeVisible();
+
+    userEvent.click(dropdown);
+    const seasonFour = await screen.findByText(/season 4/i);
+    userEvent.click(seasonFour);
+    ep1 = await screen.findAllByText(/chapter one/i);
+    expect(ep1[0]).toBeVisible();
+
+})
