@@ -583,8 +583,15 @@ const data = {
     },
 };
 
-test("render episodes when page loads", async () => {
+test("render episodes when page loads",  () => {
     render(<Episodes episodes={[]} />);
+});
+
+mockFetchShow.mockResolvedValue(data);
+
+test("render episodes when page loads", async () => {
+    const { rerender } = render(<Episodes episodes={[]} />);
+    rerender(<Episodes episodes={data._embedded.episodes} />);
 });
 
 // test("render episodes when page loads", async () => {
