@@ -10,8 +10,6 @@ jest.mock("./api/fetchShow");
 // console.log(mockFetchShow);
 
 const data = {
-  data: [
-      {
     id: 2993,
     url: "http://www.tvmaze.com/shows/2993/stranger-things",
     name: "Stranger Things",
@@ -585,11 +583,10 @@ const data = {
         },
       ],
     },
-  }]
 };
+
+mockFetchShow.mockResolvedValue(data);
 
 test("render without errors", () => {
   render(<App />);
 });
-
-mockFetchShow.mockResolvedValue(data);
